@@ -26,7 +26,7 @@ namespace WebAppScarpe_CoSabrinaCinque.Services
             articles.Add(article);
         }
 
-        public void Delete(int id)
+        public void Delete(int id)//ho voluto incrementare anche con un metodo per cancellare il prodotto,disponibile il button sulla card
         {
             var article = GetById(id);
             if (article != null)
