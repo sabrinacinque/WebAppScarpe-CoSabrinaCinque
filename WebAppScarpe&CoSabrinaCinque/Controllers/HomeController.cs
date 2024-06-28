@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebAppScarpe_CoSabrinaCinque.Entities;
 using WebAppScarpe_CoSabrinaCinque.Models;
 using WebAppScarpe_CoSabrinaCinque.Services;
-using System.IO;
+
 
 namespace WebAppScarpe_CoSabrinaCinque.Controllers
 {
@@ -45,10 +45,12 @@ namespace WebAppScarpe_CoSabrinaCinque.Controllers
                     Description = model.Description
                 };
 
-                // upload delle immagini (come fatto vedere in classe) 
+                _articleService.Create(article); 
+
+                // upload delle immagini come abbiamo fatto in classe 
                 string uploads = Path.Combine(_env.WebRootPath, "images");
 
-                if (model.Cover != null)
+                if (model.Cover != null && model.Cover.Length > 0)
                 {
                     string coverPath = Path.Combine(uploads, $"{article.Id}_cover.jpg");
                     using (var fileStream = new FileStream(coverPath, FileMode.Create))
@@ -57,7 +59,7 @@ namespace WebAppScarpe_CoSabrinaCinque.Controllers
                     }
                     article.CoverImagePath = $"/images/{article.Id}_cover.jpg";
                 }
-                if (model.AdditionalImage1 != null)
+                if (model.AdditionalImage1 != null && model.AdditionalImage1.Length > 0)
                 {
                     string additionalImagePath1 = Path.Combine(uploads, $"{article.Id}_additional1.jpg");
                     using (var fileStream = new FileStream(additionalImagePath1, FileMode.Create))
@@ -66,7 +68,7 @@ namespace WebAppScarpe_CoSabrinaCinque.Controllers
                     }
                     article.AdditionalImagePath1 = $"/images/{article.Id}_additional1.jpg";
                 }
-                if (model.AdditionalImage2 != null)
+                if (model.AdditionalImage2 != null && model.AdditionalImage2.Length > 0)
                 {
                     string additionalImagePath2 = Path.Combine(uploads, $"{article.Id}_additional2.jpg");
                     using (var fileStream = new FileStream(additionalImagePath2, FileMode.Create))
@@ -76,7 +78,7 @@ namespace WebAppScarpe_CoSabrinaCinque.Controllers
                     article.AdditionalImagePath2 = $"/images/{article.Id}_additional2.jpg";
                 }
 
-                _articleService.Create(article);
+                
                 return RedirectToAction("Articles");
             }
             return View(model);
@@ -110,7 +112,7 @@ namespace WebAppScarpe_CoSabrinaCinque.Controllers
             string additionalImagePath1 = Path.Combine(uploads, $"{article.Id}_additional1.jpg");
             string additionalImagePath2 = Path.Combine(uploads, $"{article.Id}_additional2.jpg");
 
-            if (System.IO.File.Exists(coverPath))
+            if (System.IO.File.Exists(coverPath))//è vero che sono obbligatori come file, ma è sempre bene mettere dei controlli perchè avremmo anche potuto cancellarli a mano i file in vs 
             {
                 System.IO.File.Delete(coverPath);
             }
