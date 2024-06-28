@@ -45,7 +45,7 @@ namespace WebAppScarpe_CoSabrinaCinque.Controllers
                     Description = model.Description
                 };
 
-                // Save images
+                // upload delle immagini (come fatto vedere in classe) 
                 string uploads = Path.Combine(_env.WebRootPath, "images");
 
                 if (model.Cover != null)

@@ -1,12 +1,13 @@
-﻿using WebAppScarpe_CoSabrinaCinque.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using WebAppScarpe_CoSabrinaCinque.Entities;
 
 namespace WebAppScarpe_CoSabrinaCinque.Services
 {
     public class ArticleService : IArticleService
     {
         private static List<Article> articles = new List<Article>();
+        private static int lastId = 0;
 
         public IEnumerable<Article> GetAll()
         {
@@ -20,8 +21,8 @@ namespace WebAppScarpe_CoSabrinaCinque.Services
 
         public void Create(Article article)
         {
-            // Generare un nuovo ID in modo sicuro
-            article.Id = articles.Any() ? articles.Max(a => a.Id) + 1 : 1;
+            
+            article.Id = ++lastId;
             articles.Add(article);
         }
 
