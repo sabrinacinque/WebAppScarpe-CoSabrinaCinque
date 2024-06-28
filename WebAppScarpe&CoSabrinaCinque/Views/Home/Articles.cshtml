@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebAppScarpe_CoSabrinaCinque.Entities.Article>
+
+@{
+    ViewData["Title"] = "Database Articoli";
+}
+
+<h1 class="text-center">Articoli disponibili</h1>
+
+<div class="d-flex justify-content-end mb-3">
+    <a asp-action="Create" class="btn btn-success"><h1 class="mx-0 px-0">+</h1>Crea nuovo articolo</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning" role="alert">
+        Non ci sono articoli da visualizzare.
+    </div>
+}
+else
+{
+    <div class="row mt-5">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 border border-dark text-center text-white bg-dark">
+                    <img class="card-img-top px-1 py-1" src="@item.CoverImagePath" alt="Card image cap" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">Prezzo: @item.Price.ToString("C")</p>
+                        <div class="d-flex justify-content-around">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning">Dettaglio</a>
+                            <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Sei sicuro di voler eliminare questo articolo?');">Elimina</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35004.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppScarpe&CoSabrinaCinque", "WebAppScarpe&CoSabrinaCinque\WebAppScarpe&CoSabrinaCinque.csproj", "{7E3A5D25-273E-4D71-A9C1-A354DD03EE4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E3A5D25-273E-4D71-A9C1-A354DD03EE4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E3A5D25-273E-4D71-A9C1-A354DD03EE4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E3A5D25-273E-4D71-A9C1-A354DD03EE4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E3A5D25-273E-4D71-A9C1-A354DD03EE4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {10822C2D-48E7-4C84-A6AF-0D3BDF8D6C03}
+	EndGlobalSection
+EndGlobal
